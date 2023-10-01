@@ -46,41 +46,43 @@ int	checkNumInString(string *str)
 
 void	printAll(PhoneBook *book)
 {
-	int		index;
-	string	str;
+	string	index;
+	int		i;
 
+	if (book[0].firstName.empty())
+	{
+		cout << "error: no contacts" << endl << endl;
+		return ;
+	}
 	for (int i = 93; i > 0; i--)
 		cout << "-";
 	cout << endl;
 	for (int i = 0; i < 8; i++)
 	{
 		if (book[i].firstName.empty())
-			continue ;
-		cout << "| Index: " << std::setw(10) << i + 1;// << endl;
+			break ;
+		cout << "| Index: " << std::setw(10) << i;
 		book[i].printInfo();
-	}
-	if (book[0].firstName.empty())
-	{
-		cout << "error: no contacts" << endl << endl;
-		return ;
 	}
 	cout << "Enter index: ";
 	cin >> index;
-	str = std::to_string(index);
-	if (cin.eof() || str.length() != 1 || checkNumInString(&str))
+	inputCheck(&index);	
+	if (index.length() != 1 || !checkNumInString(&index))
 	{
-		cout << "error: incorrect index" << endl;
-		exit(1);
+		cout << "\nerror: incorrect index" << endl;
+		printAll(book);
+		return ;
 	}
-	if (index > 0 && index < 9 && !book[index - 1].firstName.empty())
+	i = std::stoi(index);
+	if (i >= 0 && i < 8 && !book[i].firstName.empty())
 	{
-		book[index - 1].printContact();
+		book[i].printContact();
 		cout << endl;
 	}
 	else
 	{
-		cout << "error: incorrect index" << endl;
-		exit(1);
+		cout << "\nerror: incorrect index" << endl;
+		printAll(book);
 	}
 }
 
@@ -102,7 +104,7 @@ int main()
 			exit(0);
 		else
 		{
-			cout << "error: incorrect input" << endl << endl;
+			cout << "\nerror: incorrect input:" << input << endl;
 			continue ;
 		}
 	}

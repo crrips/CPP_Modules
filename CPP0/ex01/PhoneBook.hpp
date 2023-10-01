@@ -26,8 +26,9 @@ class PhoneBook
 		{
 			if (!isalpha((*str)[i]))
 			{
-				cout << "error: only letters" << endl;
-				exit(1);
+				cout << "error: only letters. Try again: ";
+				cin >> *str;
+				onlyLetters(str);
 			}
 		}
 	}
@@ -38,8 +39,9 @@ class PhoneBook
 		{
 			if (!isdigit((*str)[i]))
 			{
-				cout << "error: only digits" << endl;
-				exit(1);
+				cout << "error: only digits. Try again: ";
+				cin >> *str;
+				onlyDigits(str);
 			}
 		}
 	}
@@ -71,7 +73,7 @@ class PhoneBook
 		for (int i = 54; i > 0; i--)
 			cout << "-";
 		cout << endl;
-		cout << "| Phone number: " << std::setw(10) << phoneNumber; //<< endl;
+		cout << "| Phone number: " << std::setw(10) << phoneNumber;
 		cout << " | Dark secret: " << std::setw(10) << darkSecret << " |" << endl;
 		for (int i = 54; i > 0; i--)
 			cout << "-";
@@ -80,8 +82,8 @@ class PhoneBook
 
 	void	printInfo()
 	{
-		cout << " | First name: " << std::setw(10) << firstName; //<< endl;
-		cout << " | Last name: " << std::setw(10) << lastName; //<< endl;
+		cout << " | First name: " << std::setw(10) << firstName;
+		cout << " | Last name: " << std::setw(10) << lastName;
 		cout << " | Nickname: " << std::setw(10) << nickName << " |" << endl;
 		for (int i = 93; i > 0; i--)
 			cout << "-";
