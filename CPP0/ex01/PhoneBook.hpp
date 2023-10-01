@@ -10,15 +10,22 @@ using std::endl;
 using std::string;
 
 void	inputCheck(string *str);
+void	addContact(PhoneBook *book);
+void	printAll(PhoneBook *book);
 
-class PhoneBook
+class Contact
+{
+    public:
+    string firstName;
+    string lastName;
+    string nickName;
+    string phoneNumber;
+    string darkSecret;
+};
+
+class PhoneBook : public Contact
 {
 	public:
-	string firstName;
-	string lastName;
-	string nickName;
-	string phoneNumber;
-	string darkSecret;
 
 	void	onlyLetters(string *str)
 	{
