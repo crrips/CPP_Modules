@@ -10,8 +10,6 @@ using std::endl;
 using std::string;
 
 void	inputCheck(string *str);
-void	addContact(PhoneBook *book);
-void	printAll(PhoneBook *book);
 
 class Contact
 {
@@ -21,6 +19,28 @@ class Contact
     string nickName;
     string phoneNumber;
     string darkSecret;
+
+	void	printContact()
+	{
+		for (int i = 54; i > 0; i--)
+			cout << "-";
+		cout << endl;
+		cout << "| Phone number: " << std::setw(10) << phoneNumber;
+		cout << " | Dark secret: " << std::setw(10) << darkSecret << " |" << endl;
+		for (int i = 54; i > 0; i--)
+			cout << "-";
+		cout << endl;
+	}
+
+	void	printInfo()
+	{
+		cout << " | First name: " << std::setw(10) << firstName;
+		cout << " | Last name: " << std::setw(10) << lastName;
+		cout << " | Nickname: " << std::setw(10) << nickName << " |" << endl;
+		for (int i = 93; i > 0; i--)
+			cout << "-";
+		cout << endl;
+	}
 };
 
 class PhoneBook : public Contact
@@ -74,28 +94,9 @@ class PhoneBook : public Contact
 		cin >> this->darkSecret;
 		inputCheck(&this->darkSecret);
 	}
-
-	void	printContact()
-	{
-		for (int i = 54; i > 0; i--)
-			cout << "-";
-		cout << endl;
-		cout << "| Phone number: " << std::setw(10) << phoneNumber;
-		cout << " | Dark secret: " << std::setw(10) << darkSecret << " |" << endl;
-		for (int i = 54; i > 0; i--)
-			cout << "-";
-		cout << endl;
-	}
-
-	void	printInfo()
-	{
-		cout << " | First name: " << std::setw(10) << firstName;
-		cout << " | Last name: " << std::setw(10) << lastName;
-		cout << " | Nickname: " << std::setw(10) << nickName << " |" << endl;
-		for (int i = 93; i > 0; i--)
-			cout << "-";
-		cout << endl;
-	}
 };
+
+void	addContact(PhoneBook *book);
+void	printAll(PhoneBook *book);
 
 #endif
