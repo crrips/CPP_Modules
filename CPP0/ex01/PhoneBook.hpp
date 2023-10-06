@@ -1,26 +1,26 @@
 #ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-# include <iostream>
-# include <iomanip>
+#include <iostream>
+#include <iomanip>
 
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
 using std::string;
 
-void	inputCheck(string *str);
+void inputCheck(string *str);
 
 class Contact
 {
-    public:
-    string firstName;
-    string lastName;
-    string nickName;
-    string phoneNumber;
-    string darkSecret;
+public:
+	string firstName;
+	string lastName;
+	string nickName;
+	string phoneNumber;
+	string darkSecret;
 
-	void	printContact()
+	void printContact()
 	{
 		for (int i = 54; i > 0; i--)
 			cout << "-";
@@ -32,7 +32,7 @@ class Contact
 		cout << endl;
 	}
 
-	void	printInfo()
+	void printInfo()
 	{
 		cout << " | First name: " << std::setw(10) << firstName;
 		cout << " | Last name: " << std::setw(10) << lastName;
@@ -45,9 +45,8 @@ class Contact
 
 class PhoneBook : public Contact
 {
-	public:
-
-	void	onlyLetters(string *str)
+public:
+	void onlyLetters(string *str)
 	{
 		for (size_t i = 0; i < str->length(); i++)
 		{
@@ -60,7 +59,7 @@ class PhoneBook : public Contact
 		}
 	}
 
-	void	onlyDigits(string *str)
+	void onlyDigits(string *str)
 	{
 		for (size_t i = 0; i < str->length(); i++)
 		{
@@ -73,7 +72,7 @@ class PhoneBook : public Contact
 		}
 	}
 
-	void	addNew()
+	void addNew()
 	{
 		cout << "Enter first name: ";
 		cin >> this->firstName;
@@ -96,7 +95,7 @@ class PhoneBook : public Contact
 	}
 };
 
-void	addContact(PhoneBook *book);
-void	printAll(PhoneBook *book);
+void addContact(PhoneBook *book);
+void printAll(PhoneBook *book);
 
 #endif

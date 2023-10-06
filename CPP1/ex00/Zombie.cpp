@@ -2,15 +2,15 @@
 
 Zombie::Zombie(string name)
 {
-    _name = name;
+    this->_name = name;
 }
 
 void    Zombie::announce(void)
 {
-    cout << _name << ": BraiiiiiiinnnzzzZ..." << endl;
+    cout << this->_name << ": BraiiiiiiinnnzzzZ..." << endl;
 }
 
 Zombie::~Zombie()
 {
-    cout << _name << ": is dead 💀" << endl;
+    cout << this->_name << ": is dead 💀" << endl;
 }

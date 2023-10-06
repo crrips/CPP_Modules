@@ -13,13 +13,12 @@ private:
 	string _name;
 
 public:
-	Zombie();
 	Zombie(string name);
-	~Zombie();
+	Zombie(void){};
+	~Zombie(void);
 
 	void announce(void);
-	void newZombie(string name);
-	void randomChump();
+	void setName(string name);
 };
 
 #endif
