@@ -1,8 +1,5 @@
 #include <iostream>
 
-using std::std::cout;
-using std::std::endl;
-
 void	cry(char **argv)
 {
 	int i = 1;

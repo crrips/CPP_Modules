@@ -10,6 +10,17 @@ std::string inputCheck(std::string str)
 	return str;
 }
 
+void emptyCheck(std::string *str)
+{
+	if (str->empty())
+	{
+		std::cout << "error: empty string. Try again: ";
+		std::getline(std::cin, *str);
+		if (std::cin.eof()) {exit(1);}
+		emptyCheck(str);
+	}
+}
+
 void onlyLetters(std::string *str)
 {
 	for (size_t i = 0; i < str->length(); i++)
@@ -18,6 +29,7 @@ void onlyLetters(std::string *str)
 		{
 			std::cout << "error: only letters. Try again: ";
 			std::getline(std::cin, *str);
+			emptyCheck(str);
 			if (std::cin.eof()) {exit(1);}
 			onlyLetters(str);
 		}
@@ -32,6 +44,7 @@ void onlyDigits(std::string *str)
 		{
 			std::cout << "error: only digits. Try again: ";
 			std::getline(std::cin, *str);
+			emptyCheck(str);
 			if (std::cin.eof()) {exit(1);}
 			onlyDigits(str);
 		}
@@ -46,4 +59,15 @@ int	checkNumInstring(std::string *str)
 			return 1;
 	}
 	return 0;
+}
+
+std::string addData(std::string str)
+{
+	std::string input;
+
+	std::cout << str;
+	std::getline(std::cin, input);
+	emptyCheck(&input);
+	if (std::cin.eof()) {exit(1);}
+	return input;
 }

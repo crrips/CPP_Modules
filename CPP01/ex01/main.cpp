@@ -4,14 +4,16 @@ Zombie *zombieHorde(int N, std::string name);
 
 int main()
 {
-	Zombie *horde = zombieHorde(10, "Zombie");
-	for (int i = 0; i < 10; i++)
+	int N = 10;
+
+	Zombie *horde = zombieHorde(N, "Zombie");
+	for (int i = 0; i < N; i++)
 		horde[i].announce();
 	delete[] horde;
-	horde = zombieHorde(10, "new Zombie");
-	for (int i = 0; i < 10; i++)
+	horde = zombieHorde(N, "new Zombie");
+	for (int i = 0; i < N; i++)
 		horde[i].announce();
 	delete[] horde;
-	system("leaks Zombie");
+	// system("leaks Zombie");
 	return 0;
 }

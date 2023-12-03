@@ -2,37 +2,30 @@
 
 void	onlyLetters(std::string *str);
 void	onlyDigits(std::string *str);
+void	emptyCheck(std::string *str);
 int		checkNumInstring(std::string *str);
 
 void	printContact(Contact *contact);
 void	printInfo(Contact *contact);
 
+std::string addData(std::string str);
+
 void addNew(Contact *book)
 {
     std::string input;
 
-    std::cout << "Enter first name: ";
-	std::getline(std::cin, input);
-	if (std::cin.eof()) {exit(1);}
+	input = addData("Enter first name: ");
     onlyLetters(&input);
 	book->setFirstName(input);
-    std::cout << "Enter last name: ";
-    std::getline(std::cin, input);
-	if (std::cin.eof()) {exit(1);}
-	book->setLastName(input);
+	input = addData("Enter last name: ");
     onlyLetters(&input);
-    std::cout << "Enter nickname: ";
-    std::getline(std::cin, input);
-	if (std::cin.eof()) {exit(1);}
+	book->setLastName(input);
+	input = addData("Enter nickname: ");
 	book->setNickName(input);
-    std::cout << "Enter phone number: ";
-    std::getline(std::cin, input);
-	if (std::cin.eof()) {exit(1);}
+	input = addData("Enter phone number: ");
     onlyDigits(&input);
 	book->setPhoneNumber(input);
-    std::cout << "Enter dark secret: ";
-    std::getline(std::cin, input);
-	if (std::cin.eof()) {exit(1);}
+	input = addData("Enter dark secret: ");
 	book->setDarkSecret(input);
 }
 

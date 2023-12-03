@@ -3,10 +3,6 @@
 
 #include <iostream>
 
-using std::std::cout;
-using std::std::endl;
-using std::std::string;
-
 class Weapon
 {
 private:

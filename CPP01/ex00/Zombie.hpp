@@ -3,23 +3,15 @@
 
 #include <iostream>
 
-using std::std::cout;
-using std::std::endl;
-using std::std::string;
-
 class Zombie
 {
-private:
-	std::string _name;
+	private:
+		std::string _name;
 
-public:
-	Zombie();
-	Zombie(std::string name);
-	~Zombie();
-
-	void announce(void);
-	void newZombie(std::string name);
-	void randomChump();
+	public:
+		Zombie(std::string name);
+		~Zombie(void);
+		void	announce(void);
 };
 
 #endif

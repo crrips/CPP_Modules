@@ -18,7 +18,7 @@ int main()
 			exit(0);
 		else
 		{
-			std::cout << "\nerror: incorrect input:" << input << std::endl;
+			std::cout << "error: incorrect input:" << input << std::endl << std::endl;
 			continue ;
 		}
 	}
