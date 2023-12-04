@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 {
 	std::ifstream	ifs;
 	std::ofstream	ofs;
-	std::string		fileName;
+	std::string		file;
 	std::string		s1;
 	std::string		s2;
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		std::cout << "Usage: ./replacer <filename> <string to replace> <string to replace with>" << std::endl;
 		return 1;
 	}
-	fileName = argv[1];
+	file = argv[1];
 	s1 = argv[2];
 	s2 = argv[3];
 	if (s1.empty() || s2.empty())
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 		std::cout << "Error: empty string" << std::endl;
 		return 1;
 	}
-	ifs.open(fileName);
+	ifs.open(file);
 	if (!ifs.is_open())
 	{
 		std::cout << "Error: could not open file" << std::endl;
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 	ifs.close();
 	my_string_iterator_replacer(fileContent, s1, s2);
 	std::cout << fileContent;
-	ofs.open(fileName + ".replace");
+	ofs.open(file + ".replace");
 	ofs << fileContent;
 	ofs.close();
     return 0;
