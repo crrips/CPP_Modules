@@ -44,7 +44,6 @@ int main(int argc, char **argv)
 	std::string fileContent((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
 	ifs.close();
 	my_string_iterator_replacer(fileContent, s1, s2);
-	std::cout << fileContent;
 	ofs.open(file + ".replace");
 	ofs << fileContent;
 	ofs.close();
