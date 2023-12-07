@@ -31,7 +31,6 @@ Fixed::Fixed(const Fixed &other)
 
 std::ostream &operator<<(std::ostream &out, const Fixed &obj)
 {
-    // std::cout << "Copy assignment operator called" << std::endl;
     out << obj.toFloat();
     return out;
 }
