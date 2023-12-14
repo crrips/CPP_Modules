@@ -55,5 +55,5 @@ void ScavTrap::attack(const std::string &target)
 
 void ScavTrap::guardGate()
 {
-    std::cout << "ScavTrap " << this->_name << " guard gate activated!" << std::endl;
+    std::cout << "ScavTrap " << this->_name << " activated guard gate!" << std::endl;
 }

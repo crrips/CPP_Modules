@@ -45,7 +45,7 @@ void FragTrap::attack(const std::string &target)
 {
     if ((int)this->_hit < 1 || (int)this->_energy < 1)
     {
-        std::cout << "ScavTrap " << this->_name << " can't do anything" << std::endl;
+        std::cout << "FragTrap " << this->_name << " can't do anything" << std::endl;
         return;
     }
     std::cout << "FragTrap " << this->_name << " attacks "
