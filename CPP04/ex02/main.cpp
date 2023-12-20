@@ -26,6 +26,8 @@ int main()
     for (int i = 0; i < AMOUNT; i++)
         delete zoo[i];
 
+    // Animal *test = new Animal(); // error
+
     return 0;
 }
 
