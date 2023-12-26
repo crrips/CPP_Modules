@@ -4,8 +4,8 @@ int main()
 {
     try
     {
-        Bureaucrat bober("Bober", 42);
-        std::cout << bober << std::endl;
+        Bureaucrat dovbyk("Artem Dovbyk", 42);
+        std::cout << dovbyk << std::endl;
     }
     catch(const std::exception& e)
     {

@@ -29,6 +29,13 @@ class Form
         Form &operator=(const Form &other);
 
         Form(const std::string name, int gradeSign, int gradeExec);
+        void beSigned(const Bureaucrat &obj);
+        std::string getName() const;
+        bool        isSigned() const;
+        int         getGradeSign() const;
+        int         getGradeExec() const;
 };
+
+std::ostream &operator<<(std::ostream &out, const Form &obj);
 
 #endif
