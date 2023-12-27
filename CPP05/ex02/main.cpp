@@ -4,7 +4,7 @@
 
 int main()
 {
-     try
+    try
     {
         Bureaucrat bureaucrat("Artem Dovbyk", 137);
         ShrubberyCreationForm form("ShrubberyCreationForm");
