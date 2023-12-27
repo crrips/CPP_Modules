@@ -8,19 +8,19 @@ int main()
     
     rrf = someRandomIntern.makeForm("shrubbery creation", "Messi");
     bureaucrat.signForm(*rrf);
-    rrf->execute(bureaucrat);
+    bureaucrat.executeForm(*rrf);
     delete rrf;
     std::cout << std::endl;
 
     rrf = someRandomIntern.makeForm("robotomy request", "Suarez");
     bureaucrat.signForm(*rrf);
-    rrf->execute(bureaucrat);
+    bureaucrat.executeForm(*rrf);
     delete rrf;
     std::cout << std::endl;
 
     rrf = someRandomIntern.makeForm("presidential pardon", "Neymar");
     bureaucrat.signForm(*rrf);
-    rrf->execute(bureaucrat);
+    bureaucrat.executeForm(*rrf);
     delete rrf;
     std::cout << std::endl;
 
@@ -28,7 +28,7 @@ int main()
     {
         rrf = someRandomIntern.makeForm("SHRUBERRY", "Billy");
         bureaucrat.signForm(*rrf);
-        rrf->execute(bureaucrat);
+        bureaucrat.executeForm(*rrf);
         delete rrf;
     }
     catch(const std::exception& e)
@@ -41,7 +41,7 @@ int main()
     {
         rrf = someRandomIntern.makeForm("shrubbery creation", "");
         bureaucrat.signForm(*rrf);
-        rrf->execute(bureaucrat);
+        bureaucrat.executeForm(*rrf);
         delete rrf;
     }
     catch(const std::exception& e)
