@@ -1,10 +1,10 @@
 NAME	= Bureaucrat
 
-SRC		= Bureaucrat.cpp Form.cpp main.cpp
+SRC		= $(wildcard *.cpp)
 
 OBJ		= $(SRC:.cpp=.o)
 
-HEADERS	= Bureaucrat.hpp Form.hpp
+HEADERS	= $(wildcard *.hpp)
 
 FLAGS 	= -Wall -Werror -Wextra -std=c++98
 
@@ -21,7 +21,7 @@ $(NAME):$(OBJ)
 	@echo "$(GREEN)$(NAME) was compiled! 🤠$(END)"
 
 clean:
-	@rm -f $(OBJ)
+	@rm -f $(OBJ) *_shrubbery
 	@echo "$(YELLOW)Object file was deleted! 🤠$(END)"
 	
 fclean: clean
