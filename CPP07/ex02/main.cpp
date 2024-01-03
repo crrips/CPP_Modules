@@ -31,7 +31,6 @@ int main(int, char**)
 	}
 	catch (std::exception &e)
     {
-
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
