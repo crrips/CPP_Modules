@@ -3,10 +3,12 @@
 #define MAX_VAL 750
 int main(int, char**)
 {
+	Array<int> intArrEmpty(0);
+
+    std::cout << "intArrEmpty.size(): "<< intArrEmpty.size() << std::endl << std::endl;
+
 	Array<int> intArr(5);
 	Array<double> doubleArr(5);
-
-	std::cout << "size: "<< intArr.size() << std::endl << std::endl;
 
 	for (size_t i = 0; i < intArr.size(); i++)
 		intArr[i] = i;
