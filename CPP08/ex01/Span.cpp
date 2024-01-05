@@ -9,7 +9,10 @@ Span::Span(const Span &other) { *this = other; }
 Span &Span::operator=(const Span &other)
 {
     if (this != &other)
-        return *this;
+    {
+        _size = other._size;
+        _numbers = other._numbers;
+    }
     return *this;
 }
 
