@@ -26,7 +26,7 @@ bool checkNum(float num)
         std::cout << "Error: not a positive number." << std::endl;
         return false;
     }
-    else if (num > 100000)
+    else if (num > 1000)
     {
         std::cout << "Error: too large a number." << std::endl;
         return false;
@@ -39,6 +39,51 @@ bool checkNum(float num)
     return true;
 }
 
+bool checkYear(const std::string &date)
+{
+    if (atoi(date.substr(0, 4).c_str()) < 2009 || atoi(date.substr(0, 4).c_str()) > 2021)
+    {
+        std::cout << "Error: bad date format." << std::endl;
+        return false;
+    }
+    return true;
+}
+
+bool checkMonth(const std::string &date)
+{
+    if (atoi(date.substr(5, 2).c_str()) > 12 || atoi(date.substr(5, 2).c_str()) < 1)
+    {
+        std::cout << "Error: bad date format." << std::endl;
+        return false;
+    }
+    return true;
+}
+
+bool checkDay(const std::string &date)
+{
+    if (atoi(date.substr(8, 2).c_str()) > 31 || atoi(date.substr(8, 2).c_str()) < 1)
+    {
+        std::cout << "Error: bad date format." << std::endl;
+        return false;
+    }
+    if (atoi(date.substr(5, 2).c_str()) == 2 && atoi(date.substr(8, 2).c_str()) > 29)
+    {
+        std::cout << "Error: bad date format." << std::endl;
+        return false;
+    }
+    if (atoi(date.substr(5, 2).c_str()) == 2 && atoi(date.substr(8, 2).c_str()) == 29 && atoi(date.substr(0, 4).c_str()) % 4 != 0)
+    {
+        std::cout << "Error: bad date format." << std::endl;
+        return false;
+    }
+    if ((atoi(date.substr(5, 2).c_str()) == 4 || atoi(date.substr(5, 2).c_str()) == 6 || atoi(date.substr(5, 2).c_str()) == 9 || atoi(date.substr(5, 2).c_str()) == 11) && atoi(date.substr(8, 2).c_str()) > 30)
+    {
+        std::cout << "Error: bad date format." << std::endl;
+        return false;
+    }
+    return true;
+}
+
 bool checkDate(const std::string &date)
 {
     if (date.size() != 10)
@@ -46,6 +91,8 @@ bool checkDate(const std::string &date)
         std::cout << "Error: bad date format." << std::endl;
         return false;
     }
+    if (!checkYear(date) || !checkMonth(date) || !checkDay(date))
+        return false;
     for (int i = 0; i < 10; i++)
     {
         if (i == 4 || i == 7)
@@ -118,26 +165,26 @@ BitcoinExchange::BitcoinExchange(const std::string &filename)
     data.close();
 
     std::getline(file, line);
-    if (line != "date | value")
+    if (line != "date | value" || !std::getline(file, line))
     {
-        std::cout << "Error: bad input" << line << std::endl;
+        std::cout << "Error: bad input" << std::endl;
         return ;
     }
-    while (std::getline(file, line))
+
+    do
     {
         if (line.find('|') == std::string::npos)
         {
             std::cout << "Error: bad input => " << line << std::endl;
             continue ;
         }
-        std::string date = line.substr(0, line.find('|'));
+        std::string date = line.substr(0, 10);
         std::string strPrice = line.substr(line.find('|') + 1);
         float price = atof(strPrice.c_str());
-        if (!checkDate(date.substr(0, date.find(' '))))
+        if (!checkDate(date.substr(0, date.find(' '))) || !checkNum(price))
             continue ;
-        if (!checkNum(price))
-            continue ;
-        std::cout << date << "=> " << price << " = " << calc(date, price, _data) << std::endl;
-    }
+        std::cout << date << " => " << price << " = " << calc(date, price, _data) << std::endl;
+    } while (std::getline(file, line));
+
     file.close();
 }
