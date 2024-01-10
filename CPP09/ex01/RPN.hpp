@@ -1,12 +1,12 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+#include <stack>
 
 class RPN
 {
     private:
-        std::vector<std::string> _data;
+        std::stack<float> _data;
     public:
         RPN();
         ~RPN();

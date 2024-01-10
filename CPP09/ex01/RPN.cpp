@@ -12,38 +12,64 @@ RPN::RPN(const RPN &other)
 RPN &RPN::operator=(const RPN &other)
 {
     if (this != &other)
-    {
-        _data.clear();
         _data = other._data;
-    }
     return *this;
-}
-
-bool checkIllegal(const std::string &arg)
-{
-    for (size_t i = 0; i < arg.size(); i++)
-    {
-        if (arg[i] == '+' || arg[i] == '-' || arg[i] == '*' || arg[i] == '/')
-            continue ;
-        if (arg[i] >= '0' && arg[i] <= '9')
-            continue ;
-        if (arg[i] == ' ')
-            continue ;
-        return false;
-    }
-    return true;
 }
 
 RPN::RPN(const std::string &arg)
 {
-    if (arg.empty())
+    for (size_t i = 0; i < arg.size(); i++)
     {
-        std::cout << "Error: empty argument" << std::endl;
+        if (arg[i] == '+' || arg[i] == '-' || arg[i] == '*' || arg[i] == '/'
+            || (arg[i] >= '0' && arg[i] <= '9') || arg[i] == ' ')
+            continue ;
+        std::cout << "Invalid expression" << std::endl;
         return ;
     }
-    if (!checkIllegal(arg))
+
+    for (size_t i = 0; i < arg.size(); i++)
     {
-        std::cout << "Error: illegal argument" << std::endl;
+        if (arg[i] == ' ')
+            continue ;
+        if (isdigit(arg[i]))
+            _data.push(arg[i] - 48);
+        else if (_data.size() <= 1)
+        {
+            std::cout << "Invalid expression" << std::endl;
+            return ;
+        }
+        else
+        {
+            float a = _data.top();
+            _data.pop();
+            float b = _data.top();
+            _data.pop();
+            if (arg[i] == '+')
+                _data.push(b + a);
+            else if (arg[i] == '-')
+                _data.push(b - a);
+            else if (arg[i] == '*')
+                _data.push(b * a);
+            else if (arg[i] == '/')
+            {
+                if (a == 0)
+                {
+                    std::cout << "Invalid expression" << std::endl;
+                    return ;
+                }
+                _data.push(b / a);
+            }
+        }
+    }
+    if (_data.size() != 1)
+    {
+        std::cout << "Invalid expression" << std::endl;
         return ;
     }
+    while (!_data.empty())
+    {
+        std::cout << _data.top() << " ";
+        _data.pop();
+    }
+    std::cout << std::endl;
 }
