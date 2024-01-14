@@ -143,11 +143,6 @@ bool checkVal(const std::string &line, const std::string &strPrice)
             std::cout << "Error: bad input => " << line << std::endl;
             return false;
         }
-        if (i == strPrice.size() - 1 && strPrice[i] == '.')
-        {
-            std::cout << "Error: bad input => " << line << std::endl;
-            return false;
-        }
     }
     return true;
 }
