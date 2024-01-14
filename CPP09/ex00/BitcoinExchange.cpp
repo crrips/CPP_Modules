@@ -134,6 +134,19 @@ float calc(const std::string &date, float btc, std::map<std::string, float> &dat
     return 0;
 }
 
+bool checkVal(const std::string &line, const std::string &strPrice)
+{
+    for (size_t i = 0; i < strPrice.size(); i++)
+    {
+        if (!isdigit(strPrice[i]) && strPrice[i] != '.' && strPrice[i] != ' ')
+        {
+            std::cout << "Error: bad input => " << line << std::endl;
+            return false;
+        }
+    }
+    return true;
+}
+
 BitcoinExchange::BitcoinExchange(const std::string &filename)
 {
     std::ifstream file(filename);
@@ -178,10 +191,11 @@ BitcoinExchange::BitcoinExchange(const std::string &filename)
             std::cout << "Error: bad input => " << line << std::endl;
             continue ;
         }
-        std::string date = line.substr(0, 10);
+        std::string date = line.substr(0, line.find('|'));
         std::string strPrice = line.substr(line.find('|') + 1);
+        
         float price = atof(strPrice.c_str());
-        if (!checkDate(date.substr(0, date.find(' '))) || !checkNum(price))
+        if (!checkDate(date.substr(0, date.find(' '))) || !checkVal(line, strPrice) || !checkNum(price))
             continue ;
         std::cout << date << " => " << price << " = " << calc(date, price, _data) << std::endl;
     } while (std::getline(file, line));
